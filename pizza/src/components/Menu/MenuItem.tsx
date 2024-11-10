@@ -10,12 +10,15 @@ export const MenuItem: FC<MenuItemProps> = ({ pizza }): ReactElement => {
   const { name, ingredients, photoName, price, soldOut } = pizza;
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
-      <div className="max-w-[720px] mx-auto">
-        <div className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-          <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-            <img src={`/${photoName}`} alt={photoName} />
-            <div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
+    <div className="flex   justify-center items-center p-4  ">
+      <div className="  h-full mx-auto ">
+        <div className="relative flex w-full  h-full justify-between flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+          <div className="w-55  h-44 mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+            <img
+              className="object-cover"
+              src={`/${photoName}`}
+              alt={photoName}
+            />
           </div>
           <div className="p-6">
             <div className="flex items-center justify-between mb-3">

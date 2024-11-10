@@ -3,7 +3,7 @@ import { FC, ReactElement } from "react";
 export const Footer: FC = (): ReactElement => {
   return (
     <footer
-      className="mx-auto mt-32 w-full max-w-container px-4 sm:px-6 lg:px-8"
+      className="mx-auto mt-2 w-full max-w-container px-4 sm:px-6 lg:px-8"
       aria-labelledby="footer-heading"
     >
       <div className="items-centers grid grid-cols-1 justify-between gap-4 border-t border-gray-100 py-6 md:grid-cols-2">
