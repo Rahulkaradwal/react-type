@@ -1,11 +1,8 @@
 import { FC, ReactElement } from "react";
+import { Dashboard } from "./components/Dashboard";
 
 const App: FC = (): ReactElement => {
-  return (
-    <div className="bg-red-500">
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <Dashboard />;
 };
 
 export default App;
