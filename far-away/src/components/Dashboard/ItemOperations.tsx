@@ -1,7 +1,13 @@
 import { FC, ReactElement } from "react";
 import { Button } from "../ui/Button";
 
-export const ItemOperations: FC = (): ReactElement => {
+interface ItemOperationsProps {
+  emptyList: () => void;
+}
+
+export const ItemOperations: FC<ItemOperationsProps> = ({
+  emptyList,
+}): ReactElement => {
   return (
     <div className="flex gap-3 items-center  w-fit py-2 px-4 rounded-md">
       <select id="sortBy">
@@ -10,7 +16,7 @@ export const ItemOperations: FC = (): ReactElement => {
       </select>
       <Button
         style="rounded-full bg-yellow-400 text-lg text-amber-950 px-4 py-1 "
-        onClick={() => {}}
+        onClick={emptyList}
       >
         Clear List
       </Button>

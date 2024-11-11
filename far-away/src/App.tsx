@@ -8,8 +8,13 @@ const App: FC = (): ReactElement => {
   const [items, setItems] = useState<IItem[] | []>([]);
 
   const addItem = (val: IItem): void => {
-    setItems([...items, val]); // setItems()
+    setItems([...items, val]);
   };
+
+  const emptyList = (): void => {
+    setItems([]);
+  };
+
   const removeItem = (id: number): void => {
     setItems(items.filter((item) => item.id !== id));
   };
@@ -17,7 +22,12 @@ const App: FC = (): ReactElement => {
   return (
     <div className="flex flex-col h-screen justify-between">
       <Header />
-      <Dashboard items={items} addItem={addItem} removeItem={removeItem} />
+      <Dashboard
+        emptyList={emptyList}
+        items={items}
+        addItem={addItem}
+        removeItem={removeItem}
+      />
       <Footer />
     </div>
   );
