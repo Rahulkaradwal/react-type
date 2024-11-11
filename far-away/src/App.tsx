@@ -5,7 +5,8 @@ import { Header } from "./components/Header";
 import { IItem } from "./ItemDecalaration";
 
 const App: FC = (): ReactElement => {
-  const [items, setItems] = useState<IItem[] | []>([]);
+  const [items, setItems] = useState<IItem[]>([]);
+  const [itemPacked, setItemPacked] = useState<IItem[]>([]);
 
   const addItem = (val: IItem): void => {
     setItems([...items, val]);
@@ -23,12 +24,14 @@ const App: FC = (): ReactElement => {
     <div className="flex flex-col h-screen justify-between">
       <Header />
       <Dashboard
+        itemPacked={itemPacked}
+        setItemPacked={setItemPacked}
         emptyList={emptyList}
         items={items}
         addItem={addItem}
         removeItem={removeItem}
       />
-      <Footer />
+      <Footer itemPacked={itemPacked} items={items} />
     </div>
   );
 };

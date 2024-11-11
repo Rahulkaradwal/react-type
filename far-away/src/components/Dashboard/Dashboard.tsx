@@ -9,6 +9,8 @@ interface DashboardProps {
   addItem: (val: IItem) => void;
   removeItem: (id: number) => void;
   emptyList: () => void;
+  setItemPacked: (val: IItem[] | ((prev: IItem[]) => IItem[])) => void;
+  itemPacked: IItem[];
 }
 
 export const Dashboard: FC<DashboardProps> = ({
@@ -16,11 +18,18 @@ export const Dashboard: FC<DashboardProps> = ({
   addItem,
   removeItem,
   emptyList,
+  itemPacked,
+  setItemPacked,
 }): ReactElement => {
   return (
     <div className="flex flex-col justify-between items-center h-screen ">
       <InputForm addItem={addItem} />
-      <CheckItem items={items} removeItem={removeItem} />
+      <CheckItem
+        items={items}
+        removeItem={removeItem}
+        setItemPacked={setItemPacked}
+        itemPacked={itemPacked}
+      />
       <ItemOperations emptyList={emptyList} />
     </div>
   );
