@@ -1,12 +1,13 @@
-import { FC, ReactElement } from "react";
-import { MovieBox } from "./MovieBox";
-import { MovieList } from "../ui/MovieList";
+import { FC, ReactElement, ReactNode } from "react";
 
-export const Dashboard: FC = (): ReactElement => {
+interface DashboardProps {
+  children: ReactNode;
+}
+
+export const Dashboard: FC<DashboardProps> = ({ children }): ReactElement => {
   return (
-    <div className="py-4 w-4/6  flex  h-screen justify-between  gap-4">
-      <MovieBox>{<MovieList />}</MovieBox>
-      <MovieBox>{<MovieList />}</MovieBox>
+    <div className="flex justify-between w-2/3 h-screen p-5 gap-4">
+      {children}
     </div>
   );
 };
