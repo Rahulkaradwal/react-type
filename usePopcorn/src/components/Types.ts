@@ -3,6 +3,8 @@ export interface IMovie {
   Title: string;
   Year: string;
   Poster: string;
+  Description?: string;
+  Rating?: string;
 }
 
 export interface IWatchedMovie extends IMovie {
