@@ -16,7 +16,7 @@ export const Box: FC<BoxProps> = ({
     setIsBoxOpen((s) => !s);
   };
   return (
-    <div className="w-2/4 border rounded-lg p-5">
+    <div className="w-2/4 bg-gray-800  rounded-lg p-5">
       <Button onClick={handleSubmit} />
       <div className={isBoxOpen ? "" : "hidden"}>{children}</div>
     </div>
