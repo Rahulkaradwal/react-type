@@ -8,8 +8,8 @@ interface WatchedSummaryProps {
 export const WatchedSummary: FC<WatchedSummaryProps> = ({
   watchedMovie,
 }): ReactElement => {
-  // const totalMovies = watchedMovie.length;
-  const totalMovies = 5;
+  console.log(watchedMovie);
+  const totalMovies = watchedMovie.length;
   const totalTime = 19;
   return (
     <div className="bg-gray-700 rounded-b-lg -mx-4 p-4 shadow-lg mb-4">

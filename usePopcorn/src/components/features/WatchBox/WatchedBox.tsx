@@ -29,7 +29,7 @@ export const WatchedBox: FC<WatchedBoxProps> = ({
   return (
     <div className="p-4  w-2/4 rounded-lg text-white bg-gray-800">
       <Button onClick={handleSubmit} />
-      <WatchedSummary />
+      <WatchedSummary watchedMovie={watchedMovie} />
       <div className={isBoxOpen ? "" : "hidden"}>
         {selectMovie && (
           <MovieDetail
