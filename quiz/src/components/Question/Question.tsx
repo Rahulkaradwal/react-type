@@ -13,7 +13,6 @@ export const Question: FC<QuestionProps> = ({
   dispatch,
   answer,
 }): ReactElement => {
-  console.log(question);
   return (
     <div>
       <p className="mb-4">{question.question}</p>

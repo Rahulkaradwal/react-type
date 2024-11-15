@@ -4,6 +4,7 @@ import { Questions } from "../Question/Questions";
 import { Footer } from "../Footer/Footer";
 import { Start } from "../Question/Start";
 import { Action, IState } from "../../TypeDefinations";
+import { Finished } from "../Finished/Finished";
 
 const initialState: IState = {
   status: "start",
@@ -35,6 +36,18 @@ function counterReducer(state: IState, action: Action): IState {
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
 
+    case "finished":
+      return { ...state, status: "finished" };
+    case "restart":
+      return { ...state, status: "ready", points: 0, index: 0, answer: null };
+    case "tick":
+      return {
+        ...state,
+        status: "ready",
+        index: state.index + 1,
+        answer: null,
+      };
+
     default:
       throw new Error("Unknown action");
   }
@@ -51,7 +64,9 @@ export const Home: FC = (): ReactElement => {
 
   return (
     <div className="h-screen bg-slate-600 gap-4 flex-col flex p-20 text-2xl justify-center">
-      {state.status === "start" ? (
+      {state.status === "start" ||
+      state.status === "error" ||
+      state.status === "finished" ? (
         ""
       ) : (
         <Header
@@ -65,7 +80,12 @@ export const Home: FC = (): ReactElement => {
       {state.status === "ready" && (
         <Questions state={state} dispatch={dispatch} />
       )}
-      {state.status === "start" ? (
+      {state.status === "finished" && (
+        <Finished dispatch={dispatch} points={state.points} />
+      )}
+      {state.status === "start" ||
+      state.status === "error" ||
+      state.status === "finished" ? (
         ""
       ) : (
         <Footer
