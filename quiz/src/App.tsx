@@ -1,7 +1,8 @@
 import { FC, ReactElement } from "react";
+import { Home } from "./components/Home/Home";
 
 const App: FC = (): ReactElement => {
-  return <div className="bg-red-500">App</div>;
+  return <Home />;
 };
 
 export default App;
