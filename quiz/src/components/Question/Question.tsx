@@ -1,14 +1,22 @@
 import { FC, ReactElement } from "react";
+import { IQuestion } from "../../TypeDefinations";
+import { Action } from "../Home/Home";
+import { Option } from "./Option";
 
-export const Question: FC = (): ReactElement => {
+interface QuestionProps {
+  question: IQuestion;
+  dispatch: React.Dispatch<Action>;
+}
+
+export const Question: FC<QuestionProps> = ({ question }): ReactElement => {
+  console.log(question);
   return (
     <div>
-      <p className="mb-4">Which is the most Popular Javascript Framework</p>
+      <p className="mb-4">{question.question}</p>
       <ul className="flex flex-col gap-4 cursor-pointer">
-        <li className="py-2 px-6 ml-8 -mr-8 rounded-full bg-blue-300">React</li>
-        <li className="py-2 px-6 rounded-full bg-yellow-600">Angular</li>
-        <li className="py-2 px-6 rounded-full bg-yellow-600">Vue</li>
-        <li className="py-2 px-6 rounded-full bg-yellow-600">Suvlte</li>
+        {question.options.map((option: string, index: number) => (
+          <Option key={index} index={index} option={option} />
+        ))}
       </ul>
     </div>
   );

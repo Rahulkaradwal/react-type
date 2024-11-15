@@ -1,25 +1,39 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { Question } from "./Question";
 import { Action, IState } from "../Home/Home";
 
 interface QuestionProps {
-  state: IState;
   dispatch: React.Dispatch<Action>;
+  state: IState;
 }
 
 export const Questions: FC<QuestionProps> = ({
-  state,
-  // dispatch,
+  dispatch,
+  state: { questions, index },
 }): ReactElement => {
-  console.log(state);
-
-  if (state.status === "start") {
-    return <p>start</p>;
-  }
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await fetch("http://localhost:3001/questions");
+        const questions = await response.json();
+        dispatch({ type: "dataReceived", payload: questions });
+      } catch (error) {
+        dispatch({ type: "dataFailed" });
+        console.error("Failed to fetch questions", error);
+      }
+    }
+    getData();
+  }, [dispatch]);
 
   return (
     <div className="flex w-full rounded-lg items-center justify-center h-2/3  text-slate-50  ">
-      <Question />
+      {questions.length > 0 && (
+        <Question
+          key={questions[index].id}
+          dispatch={dispatch}
+          question={questions[index]}
+        />
+      )}
     </div>
   );
 };
