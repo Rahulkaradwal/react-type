@@ -1,16 +1,3 @@
-// {
-//     "question": "Which is the most popular JavaScript framework?",
-//     "options": [
-//       "Angular",
-//       "React",
-//       "Svelte",
-//       "Vue"
-//     ],
-//     "correctOption": 1,
-//     "points": 10,
-//     "id": "a701"
-//   },
-
 export interface IOptions {
   options: string[];
 }
@@ -22,3 +9,23 @@ export interface IQuestion {
   points: number;
   id: string;
 }
+
+type Status = "start" | "loading" | "error" | "ready" | "active" | "finished";
+
+export interface IState {
+  status: Status;
+  answer: number | null;
+  points: number;
+  index: number;
+  questions: IQuestion[];
+}
+
+export type Action =
+  | { type: "start" }
+  | { type: "dataReceived"; payload: IQuestion[] }
+  | { type: "dataFailed" }
+  | { type: "newAnswer"; payload: number }
+  | { type: "nextQuestion" }
+  | { type: "finished" }
+  | { type: "restart" }
+  | { type: "tick" };

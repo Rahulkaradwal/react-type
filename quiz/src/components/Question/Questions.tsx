@@ -1,7 +1,6 @@
 import { FC, ReactElement, useEffect } from "react";
 import { Question } from "./Question";
-import { Action, IState } from "../Home/Home";
-
+import { Action, IState } from "../../TypeDefinations";
 interface QuestionProps {
   dispatch: React.Dispatch<Action>;
   state: IState;

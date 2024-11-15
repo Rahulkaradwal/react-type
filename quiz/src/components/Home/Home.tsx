@@ -3,17 +3,7 @@ import { Header } from "../Header/Header";
 import { Questions } from "../Question/Questions";
 import { Footer } from "../Footer/Footer";
 import { Start } from "../Question/Start";
-import { IQuestion } from "../../TypeDefinations";
-
-type Status = "start" | "loading" | "error" | "ready" | "active" | "finished";
-
-export interface IState {
-  status: Status;
-  answer: number | null;
-  points: number;
-  index: number;
-  questions: IQuestion[];
-}
+import { Action, IState } from "../../TypeDefinations";
 
 const initialState: IState = {
   status: "start",
@@ -22,16 +12,6 @@ const initialState: IState = {
   points: 0,
   index: 0,
 };
-
-export type Action =
-  | { type: "start" }
-  | { type: "dataReceived"; payload: IQuestion[] }
-  | { type: "dataFailed" }
-  | { type: "newAnswer"; payload: number }
-  | { type: "nextQuestion" }
-  | { type: "finished" }
-  | { type: "restart" }
-  | { type: "tick" };
 
 function counterReducer(state: IState, action: Action): IState {
   switch (action.type) {
@@ -53,7 +33,7 @@ function counterReducer(state: IState, action: Action): IState {
       };
     }
     case "nextQuestion":
-      return { ...state, index: state.index + 1 };
+      return { ...state, index: state.index + 1, answer: null };
 
     default:
       throw new Error("Unknown action");

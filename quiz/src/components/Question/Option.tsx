@@ -1,5 +1,5 @@
 import { FC, ReactElement } from "react";
-import { Action } from "../Home/Home";
+import { Action } from "../../TypeDefinations";
 
 interface OptionProps {
   option: string;

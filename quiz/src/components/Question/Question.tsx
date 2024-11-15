@@ -1,6 +1,5 @@
 import { FC, ReactElement } from "react";
-import { IQuestion } from "../../TypeDefinations";
-import { Action } from "../Home/Home";
+import { Action, IQuestion } from "../../TypeDefinations";
 import { Option } from "./Option";
 
 interface QuestionProps {
