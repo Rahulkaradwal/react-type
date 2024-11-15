@@ -6,16 +6,28 @@ import { Option } from "./Option";
 interface QuestionProps {
   question: IQuestion;
   dispatch: React.Dispatch<Action>;
+  answer: number | null;
 }
 
-export const Question: FC<QuestionProps> = ({ question }): ReactElement => {
+export const Question: FC<QuestionProps> = ({
+  question,
+  dispatch,
+  answer,
+}): ReactElement => {
   console.log(question);
   return (
     <div>
       <p className="mb-4">{question.question}</p>
       <ul className="flex flex-col gap-4 cursor-pointer">
         {question.options.map((option: string, index: number) => (
-          <Option key={index} index={index} option={option} />
+          <Option
+            correctOption={question.correctOption}
+            dispatch={dispatch}
+            key={index}
+            index={index}
+            option={option}
+            answer={answer}
+          />
         ))}
       </ul>
     </div>

@@ -9,7 +9,7 @@ interface QuestionProps {
 
 export const Questions: FC<QuestionProps> = ({
   dispatch,
-  state: { questions, index },
+  state: { questions, index, answer },
 }): ReactElement => {
   useEffect(() => {
     async function getData() {
@@ -32,6 +32,7 @@ export const Questions: FC<QuestionProps> = ({
           key={questions[index].id}
           dispatch={dispatch}
           question={questions[index]}
+          answer={answer}
         />
       )}
     </div>
