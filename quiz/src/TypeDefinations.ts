@@ -18,6 +18,7 @@ export interface IState {
   points: number;
   index: number;
   questions: IQuestion[];
+  secondsRemaining: number | null;
 }
 
 export type Action =

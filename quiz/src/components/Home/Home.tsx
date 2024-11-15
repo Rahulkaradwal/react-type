@@ -12,6 +12,7 @@ const initialState: IState = {
   answer: null,
   points: 0,
   index: 0,
+  secondsRemaining: null,
 };
 
 function counterReducer(state: IState, action: Action): IState {
@@ -19,7 +20,12 @@ function counterReducer(state: IState, action: Action): IState {
     case "start":
       return { ...state, status: "ready" };
     case "dataReceived":
-      return { ...state, status: "ready", questions: action.payload };
+      return {
+        ...state,
+        status: "ready",
+        questions: action.payload,
+        secondsRemaining: state.questions.length * 30,
+      };
     case "dataFailed":
       return { ...state, status: "error" };
     case "newAnswer": {
@@ -43,9 +49,8 @@ function counterReducer(state: IState, action: Action): IState {
     case "tick":
       return {
         ...state,
-        status: "ready",
-        index: state.index + 1,
-        answer: null,
+        secondsRemaining: state.secondsRemaining - 1,
+        status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
 
     default:
@@ -90,6 +95,7 @@ export const Home: FC = (): ReactElement => {
       ) : (
         <Footer
           index={state.index}
+          secondsRemaining={state.secondsRemaining}
           totalQuestions={totalQuestions}
           dispatch={dispatch}
         />

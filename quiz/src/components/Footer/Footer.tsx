@@ -1,36 +1,32 @@
 import { FC, ReactElement } from "react";
 import { Action } from "../../TypeDefinations";
-
-const footerClasses = "border-2 rounded-full px-6 py-2";
+import { NextButton } from "./NextButton";
+import { Timer } from "./Timer";
 
 interface FooterProps {
   dispatch: React.Dispatch<Action>;
   totalQuestions: number;
   index: number;
+  secondsRemaining: number | null;
 }
 export const Footer: FC<FooterProps> = ({
   dispatch,
   totalQuestions,
   index,
+  secondsRemaining,
 }): ReactElement => {
   return (
     <footer className="flex justify-between px-10 text-slate-50  h-20 w-full items-center   rounded-lg  ">
-      <p className={footerClasses}>07:02</p>
-      {index + 1 === totalQuestions ? (
-        <button
-          className={footerClasses}
-          onClick={() => dispatch({ type: "finished" })}
-        >
-          Finish
-        </button>
-      ) : (
-        <button
-          className={footerClasses}
-          onClick={() => dispatch({ type: "nextQuestion" })}
-        >
-          Next
-        </button>
-      )}
+      <Timer
+        secondsRemaining={secondsRemaining}
+        dispatch={dispatch}
+        totalQuestions={totalQuestions}
+      />
+      <NextButton
+        index={index}
+        totalQuestions={totalQuestions}
+        dispatch={dispatch}
+      />
     </footer>
   );
 };
