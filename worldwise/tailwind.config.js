@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "homepage-background": "url('/bg.jpg')",
+        "product-background": "url('/img-1.jpg')",
       },
     },
   },
