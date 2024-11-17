@@ -1,37 +1,46 @@
 import { FC, ReactElement, useState } from "react";
+import { Header } from "../components/Header";
+import { FormElement } from "../components/FormElement";
 
 export const Login: FC = (): ReactElement => {
   // PRE-FILL FOR DEV PURPOSES
-  const [email, setEmail] = useState("jack@example.com");
-  const [password, setPassword] = useState("qwerty");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(email, password);
+
+  const handleEmail = (val: string): void => {
+    setEmail(val);
+  };
+  const handlePassword = (val: string): void => {
+    setPassword(val);
+  };
 
   return (
-    <main className="">
-      <form className="">
-        <div className="">
-          <label htmlFor="email">Email address</label>
-          <input
+    <main className="bg-slate-700 h-screen overflow-hidden">
+      <Header />
+      <div className="flex justify-center h-full items-center">
+        <form className="bg-slate-600 flex w-1/3   flex-col gap-5 p-10 rounded-lg ">
+          <FormElement
+            value={email}
             type="email"
             id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            text="Email Address"
+            onChange={handleEmail}
           />
-        </div>
-
-        <div className="">
-          <label htmlFor="password">Password</label>
-          <input
+          <FormElement
+            value={password}
             type="password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            text="Password"
+            onChange={handlePassword}
           />
-        </div>
 
-        <div>
-          <button>Login</button>
-        </div>
-      </form>
+          <div>
+            <button className="px-4 py-2 rounded-md bg-green-500">LOGIN</button>
+          </div>
+        </form>
+      </div>
     </main>
   );
 };
