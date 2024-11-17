@@ -1,9 +1,11 @@
 import { FC, ReactElement } from "react";
+import { Header } from "../components/Header";
 
 export const Homepage: FC = (): ReactElement => {
   return (
     <main>
       <section className="relative h-screen overflow-hidden">
+        <Header />
         {/* Background image with grey overlay */}
         <div className="absolute inset-0 bg-homepage-background bg-center bg-cover">
           <div className="absolute inset-0 bg-black bg-opacity-35"></div>

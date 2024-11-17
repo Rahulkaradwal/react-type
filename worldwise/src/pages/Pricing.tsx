@@ -2,7 +2,7 @@ import { FC } from "react";
 
 export const Pricing: FC = () => {
   return (
-    <main className="">
+    <header className="">
       <section>
         <div>
           <h2>
@@ -18,6 +18,6 @@ export const Pricing: FC = () => {
         </div>
         <img src="img-2.jpg" alt="overview of a large city with skyscrapers" />
       </section>
-    </main>
+    </header>
   );
 };
