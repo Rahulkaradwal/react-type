@@ -1,8 +1,6 @@
-// Uses the same styles as Product
-
 import { FC } from "react";
 
-export const Product: FC = () => {
+export const Pricing: FC = () => {
   return (
     <main className="">
       <section>
