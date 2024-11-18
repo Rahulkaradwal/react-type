@@ -1,6 +1,6 @@
 import { FC, ReactElement, useState } from "react";
-import { Header } from "../components/Header";
-import { FormElement } from "../components/FormElement";
+import { Header } from "../components/ui/Header";
+import { FormElement } from "../components/ui/FormElement";
 
 export const Login: FC = (): ReactElement => {
   // PRE-FILL FOR DEV PURPOSES

@@ -5,6 +5,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { Login } from "./pages/Login";
 import { Pricing } from "./pages/Pricing";
 import { Product } from "./pages/Product";
+import { AppLayout } from "./pages/AppLayout";
 
 const App: FC = (): ReactElement => {
   return (
@@ -16,6 +17,7 @@ const App: FC = (): ReactElement => {
           <Route path="/product" element={<Product />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/app" element={<AppLayout />} />
         </Routes>
       </BrowserRouter>
     </div>
