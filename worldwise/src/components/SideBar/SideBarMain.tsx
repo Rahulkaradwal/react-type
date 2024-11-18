@@ -1,22 +1,20 @@
 import { FC, ReactElement } from "react";
 import { NavItems } from "../ui/NavItems";
-import { IData } from "../../pages/AppLayout";
 import { Footer } from "./Footer";
 import { Logo } from "./Logo";
-import { Country } from "./Country";
-import { City } from "./City";
 
-interface SideBarMain {
-  data: IData[];
-}
+import { Outlet } from "react-router-dom";
 
-export const SideBarMain: FC<SideBarMain> = ({ data }): ReactElement => {
+interface SideBarMain {}
+
+export const SideBarMain: FC<SideBarMain> = (): ReactElement => {
   return (
     <section className=" relative w-3/5 bg-slate-700 p-6 flex flex-col gap-4 items-center ">
       <Logo />
       <NavItems />
-      <City data={data} />
-      <Country data={data} />
+      <Outlet />
+      {/* <City data={data} />
+      <Country data={data} /> */}
 
       <Footer />
     </section>

@@ -1,7 +1,9 @@
 import { FC, ReactElement } from "react";
 import { Header } from "../components/ui/Header";
+import { useNavigate } from "react-router-dom";
 
 export const Homepage: FC = (): ReactElement => {
+  const navigate = useNavigate();
   return (
     <main>
       <section className="relative h-screen overflow-hidden">
@@ -22,7 +24,12 @@ export const Homepage: FC = (): ReactElement => {
             of. Never forget your wonderful experiences, and show your friends
             how you have wandered the world.
           </h2>
-          <button className="text-xl py-2 rounded-md bg-green-600 p-1 px-5 text-slate-900">
+          <button
+            className="text-xl py-2 rounded-md bg-green-600 p-1 px-5 text-slate-900"
+            onClick={() => {
+              navigate("/app");
+            }}
+          >
             Start Tracking Now
           </button>
         </div>
