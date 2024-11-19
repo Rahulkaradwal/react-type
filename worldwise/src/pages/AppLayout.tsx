@@ -10,8 +10,3 @@ export const AppLayout: FC = (): ReactElement => {
     </main>
   );
 };
-
-// {isLoading && <Loader />}
-//       {!isLoading && error && <Error message={error} />}
-//       {!isLoading && !error && data.length > 0 && <SideBarMain data={data} />}
-//       {!isLoading && !error && data.length === 0 && <p>No data available.</p>}

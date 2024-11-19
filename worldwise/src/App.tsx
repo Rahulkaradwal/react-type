@@ -52,14 +52,18 @@ const App: FC = (): ReactElement => {
     <div className="overflow-hidden h-screen ">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route index element={<Homepage />} />
           <Route path="/app" element={<AppLayout />}>
             <Route
               index
               element={<City data={data} isLoading={isLoading} error={error} />}
             />
+            <Route
+              path="city"
+              element={<City data={data} isLoading={isLoading} error={error} />}
+            />
             <Route path="city/:id" element={<CityDetail data={data} />} />
-            <Route path="country/:id" element={<Country data={data} />} />
+            <Route path="country" element={<Country data={data} />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<Product />} />
