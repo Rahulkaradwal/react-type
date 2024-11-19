@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
+import { Loader } from "../../ui/Loader";
 import { CityItem } from "./CityItem";
-import { IData } from "../../App";
-import { Loader } from "../ui/Loader";
-import { Error } from "../ui/Error";
+import { Error } from "../../ui/Error";
+import { IData } from "../../../App";
 
 interface CityProps {
   data: IData[];

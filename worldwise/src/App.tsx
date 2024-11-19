@@ -6,9 +6,10 @@ import { Login } from "./pages/Login";
 import { Pricing } from "./pages/Pricing";
 import { Product } from "./pages/Product";
 import { AppLayout } from "./pages/AppLayout";
-import { City } from "./components/SideBar/City";
-import { Country } from "./components/SideBar/Country";
-import { CityDetail } from "./components/SideBar/CityDetail";
+import { Country } from "./components/SideBar/country/Country";
+import { CityDetail } from "./components/SideBar/city/CityDetail";
+import { City } from "./components/SideBar/city/City";
+import { MainForm } from "./components/SideBar/form/MainForm";
 
 interface IPosition {
   lat: number;
@@ -64,6 +65,7 @@ const App: FC = (): ReactElement => {
             />
             <Route path="city/:id" element={<CityDetail data={data} />} />
             <Route path="country" element={<Country data={data} />} />
+            <Route path="form" element={<MainForm />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<Product />} />

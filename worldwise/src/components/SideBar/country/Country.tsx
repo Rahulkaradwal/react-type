@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 import { CountryItem } from "./CountryItem";
-import { IData } from "../../App";
+import { IData } from "../../../App";
 
 interface CountryProps {
   data: IData[];

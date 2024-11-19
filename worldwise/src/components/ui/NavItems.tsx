@@ -19,7 +19,7 @@ export const NavItems: FC = (): ReactElement => {
         }
         to="country"
       >
-        Cities
+        Countries
       </NavLink>
     </nav>
   );

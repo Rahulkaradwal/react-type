@@ -1,7 +1,7 @@
 import { FC, ReactElement } from "react";
 import { NavItems } from "../ui/NavItems";
-import { Footer } from "./Footer";
-import { Logo } from "./Logo";
+import { Footer } from "../ui/Footer";
+import { Logo } from "../ui/Logo";
 
 import { Outlet } from "react-router-dom";
 

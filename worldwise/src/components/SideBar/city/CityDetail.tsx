@@ -1,7 +1,7 @@
 import { FC, ReactElement } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IData } from "../../App";
-import { formatDate } from "../../utils/DateConverter";
+import { IData } from "../../../App";
+import { formatDate } from "../../../utils/DateConverter";
 
 interface CityDetailProps {
   data: IData[];
