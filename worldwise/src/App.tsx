@@ -8,6 +8,7 @@ import { Product } from "./pages/Product";
 import { AppLayout } from "./pages/AppLayout";
 import { City } from "./components/SideBar/City";
 import { Country } from "./components/SideBar/Country";
+import { CityDetail } from "./components/SideBar/CityDetail";
 
 interface IPosition {
   lat: number;
@@ -53,8 +54,11 @@ const App: FC = (): ReactElement => {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/app" element={<AppLayout />}>
-            <Route index element={<City data={data} />} />
-            <Route path="city/:id" element={<City data={data} />} />
+            <Route
+              index
+              element={<City data={data} isLoading={isLoading} error={error} />}
+            />
+            <Route path="city/:id" element={<CityDetail data={data} />} />
             <Route path="country/:id" element={<Country data={data} />} />
           </Route>
           <Route path="/login" element={<Login />} />

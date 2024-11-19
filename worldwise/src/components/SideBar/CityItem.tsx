@@ -1,6 +1,7 @@
 import { FC, ReactElement } from "react";
-import { IData } from "../../pages/AppLayout";
 import { formatDate } from "../../utils/DateConverter";
+import { Link } from "react-router-dom";
+import { IData } from "../../App";
 
 interface CityItemProps {
   data: IData;
@@ -8,7 +9,10 @@ interface CityItemProps {
 
 export const CityItem: FC<CityItemProps> = ({ data }): ReactElement => {
   return (
-    <div className="flex rounded-md text-slate-50 w-[90%] border-l-4 border-green-500  bg-slate-600 py-3 px-6  justify-between items-center gap-2">
+    <Link
+      to={`city/${data.id}`}
+      className="flex rounded-md text-slate-50 w-[90%] border-l-4 border-green-500  bg-slate-600 py-3 px-6  justify-between items-center gap-2"
+    >
       <div className="flex gap-3 items-center">
         <span>{data.emoji}</span>
         <p>{data.cityName}</p>
@@ -19,6 +23,6 @@ export const CityItem: FC<CityItemProps> = ({ data }): ReactElement => {
           &times;
         </button>
       </div>
-    </div>
+    </Link>
   );
 };

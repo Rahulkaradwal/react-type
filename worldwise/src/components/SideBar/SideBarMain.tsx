@@ -13,8 +13,6 @@ export const SideBarMain: FC<SideBarMain> = (): ReactElement => {
       <Logo />
       <NavItems />
       <Outlet />
-      {/* <City data={data} />
-      <Country data={data} /> */}
 
       <Footer />
     </section>
