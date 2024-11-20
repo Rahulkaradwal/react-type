@@ -1,71 +1,13 @@
-import { FC, ReactElement, useReducer } from "react";
+import { FC, ReactElement } from "react";
 import { Header } from "../Header/Header";
 import { Questions } from "../Question/Questions";
 import { Footer } from "../Footer/Footer";
 import { Start } from "../Question/Start";
-import { Action, IState } from "../../TypeDefinations";
 import { Finished } from "../Finished/Finished";
-
-const initialState: IState = {
-  status: "start",
-  questions: [],
-  answer: null,
-  points: 0,
-  index: 0,
-  secondsRemaining: null,
-};
-
-function counterReducer(state: IState, action: Action): IState {
-  switch (action.type) {
-    case "start":
-      return { ...state, status: "ready" };
-    case "dataReceived":
-      return {
-        ...state,
-        status: "ready",
-        questions: action.payload,
-        secondsRemaining: state.questions.length * 30,
-      };
-    case "dataFailed":
-      return { ...state, status: "error" };
-    case "newAnswer": {
-      const question = state.questions[state.index];
-      return {
-        ...state,
-        answer: action.payload,
-        points:
-          action.payload === question.correctOption
-            ? state.points + question.points
-            : state.points,
-      };
-    }
-    case "nextQuestion":
-      return { ...state, index: state.index + 1, answer: null };
-
-    case "finished":
-      return { ...state, status: "finished" };
-    case "restart":
-      return { ...state, status: "ready", points: 0, index: 0, answer: null };
-    case "tick":
-      return {
-        ...state,
-        secondsRemaining: state.secondsRemaining - 1,
-        status: state.secondsRemaining === 0 ? "finished" : state.status,
-      };
-
-    default:
-      throw new Error("Unknown action");
-  }
-}
+import useQuestion from "../../hooks/useQuestion";
 
 export const Home: FC = (): ReactElement => {
-  const [state, dispatch] = useReducer(counterReducer, initialState);
-
-  const totalQuestions = state.questions.length;
-  const totalPoints = state.questions.reduce(
-    (prev, curr) => prev + curr.points,
-    0
-  );
+  const { state, totalPoints, totalQuestions, dispatch } = useQuestion();
 
   return (
     <div className="h-screen bg-slate-600 gap-4 flex-col flex p-20 text-2xl justify-center">
