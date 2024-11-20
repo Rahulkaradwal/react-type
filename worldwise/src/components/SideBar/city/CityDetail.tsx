@@ -1,21 +1,26 @@
 import { FC, ReactElement } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IData } from "../../../App";
 import { formatDate } from "../../../utils/DateConverter";
 
-interface CityDetailProps {
-  data: IData[];
-}
-
-export const CityDetail: FC<CityDetailProps> = ({ data }): ReactElement => {
+export const CityDetail: FC = (): ReactElement => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   // Convert the id from useParams to a number for comparison
 
   // Find the city with the matching id
-  const city = data.find((city) => Number(city.id) === Number(id));
-
+  const city = {
+    cityName: "Madrid",
+    country: "Spain",
+    emoji: "🇪🇸",
+    date: "2027-07-15T08:22:53.976Z",
+    notes: "",
+    position: {
+      lat: 40.46635901755316,
+      lng: -3.7133789062500004,
+    },
+    id: 17806711,
+  };
   // Handle cases where the city is not found
   if (!city) {
     return <p>City not found</p>;

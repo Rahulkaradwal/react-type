@@ -1,17 +1,14 @@
 import { FC, ReactElement } from "react";
 import { CountryItem } from "./CountryItem";
-import { IData } from "../../../App";
-
-interface CountryProps {
-  data: IData[];
-}
+import { usePost } from "../../../hooks/usePost";
 
 interface Country {
   country: string;
   emoji: string;
 }
 
-export const Country: FC<CountryProps> = ({ data }): ReactElement => {
+export const Country: FC = (): ReactElement => {
+  const { data } = usePost();
   if (!data || data.length === 0) {
     return <p>No countries available.</p>;
   }

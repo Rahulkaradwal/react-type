@@ -7,6 +7,9 @@ export default {
         "homepage-background": "url('/bg.jpg')",
         "product-background": "url('/img-1.jpg')",
       },
+      zIndex: {
+        50: "50",
+      },
     },
   },
   plugins: [],
