@@ -44,16 +44,6 @@ function counterReducer(state: IState, action: Action): IState {
 
     case "finished":
       return { ...state, status: "finished" };
-    case "restart":
-      return { ...state, status: "ready", points: 0, index: 0, answer: null };
-    case "tick":
-      return {
-        ...state,
-        secondsRemaining: !state.secondsRemaining
-          ? 0
-          : state.secondsRemaining - 1,
-        status: state.secondsRemaining === 0 ? "finished" : state.status,
-      };
 
     default:
       throw new Error("Unknown action");

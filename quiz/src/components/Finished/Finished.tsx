@@ -1,10 +1,11 @@
 import { FC, ReactElement } from "react";
 import useQuestion from "../../hooks/useQuestion";
+import useTimer from "../../hooks/useTimer";
 
 export const Finished: FC = (): ReactElement => {
+  const { dispatch } = useTimer();
   const {
     state: { points },
-    dispatch,
   } = useQuestion();
   const handleClick = (): void => {
     dispatch({ type: "restart" });

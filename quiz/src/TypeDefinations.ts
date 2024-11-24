@@ -27,6 +27,4 @@ export type Action =
   | { type: "dataFailed" }
   | { type: "newAnswer"; payload: number }
   | { type: "nextQuestion" }
-  | { type: "finished" }
-  | { type: "restart" }
-  | { type: "tick" };
+  | { type: "finished" };
