@@ -1,15 +1,11 @@
 import { FC, ReactElement } from "react";
-import { Action } from "../../TypeDefinations";
+import useQuestion from "../../hooks/useQuestion";
 
-interface FinishedProps {
-  points: number;
-  dispatch: React.Dispatch<Action>;
-}
-
-export const Finished: FC<FinishedProps> = ({
-  points,
-  dispatch,
-}): ReactElement => {
+export const Finished: FC = (): ReactElement => {
+  const {
+    state: { points },
+    dispatch,
+  } = useQuestion();
   const handleClick = (): void => {
     dispatch({ type: "restart" });
   };

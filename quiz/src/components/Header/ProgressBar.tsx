@@ -1,15 +1,12 @@
 import { FC, ReactElement } from "react";
+import useQuestion from "../../hooks/useQuestion";
 
-interface ProgressBarProps {
-  currentQuestion: number;
-  totalQuestions: number;
-}
+export const ProgressBar: FC = (): ReactElement => {
+  const {
+    totalQuestions,
+    state: { index: currentQuestion },
+  } = useQuestion();
 
-export const ProgressBar: FC<ProgressBarProps> = ({
-  currentQuestion,
-  totalQuestions,
-}): ReactElement => {
-  // Calculate progress percentage
   const progressPercentage =
     totalQuestions > 0 ? (currentQuestion / totalQuestions) * 100 : 0;
 

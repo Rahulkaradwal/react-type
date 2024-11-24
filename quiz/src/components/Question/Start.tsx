@@ -1,11 +1,9 @@
 import { FC, ReactElement } from "react";
-import { Action } from "../Home/Home";
+import useQuestion from "../../hooks/useQuestion";
 
-interface StartProps {
-  dispatch: React.Dispatch<Action>;
-}
+export const Start: FC = (): ReactElement => {
+  const { dispatch } = useQuestion();
 
-export const Start: FC<StartProps> = ({ dispatch }): ReactElement => {
   const handleClick = (): void => {
     dispatch({ type: "start" });
   };

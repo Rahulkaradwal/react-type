@@ -1,15 +1,12 @@
 import { FC, ReactElement, useEffect } from "react";
-import { Action } from "../../TypeDefinations";
+import useQuestion from "../../hooks/useQuestion";
 
-interface TimerProps {
-  totalQuestions: number;
-  dispatch: React.Dispatch<Action>;
-  secondsRemaining: number | null;
-}
-export const Timer: FC<TimerProps> = ({
-  dispatch,
-  secondsRemaining,
-}): ReactElement => {
+export const Timer: FC = (): ReactElement => {
+  const {
+    state: { secondsRemaining },
+    dispatch,
+  } = useQuestion();
+
   useEffect(() => {
     const timer = setInterval(() => {
       dispatch({ type: "tick" });

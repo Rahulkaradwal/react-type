@@ -1,15 +1,13 @@
-import { FC, ReactElement, useEffect } from "react";
+import { FC, memo, ReactElement, useEffect } from "react";
 import { Question } from "./Question";
-import { Action, IState } from "../../TypeDefinations";
-interface QuestionProps {
-  dispatch: React.Dispatch<Action>;
-  state: IState;
-}
+import useQuestion from "../../hooks/useQuestion";
 
-export const Questions: FC<QuestionProps> = ({
-  dispatch,
-  state: { questions, index, answer },
-}): ReactElement => {
+const Questions: FC = (): ReactElement => {
+  const {
+    state: { index, questions, answer },
+    dispatch,
+  } = useQuestion();
+
   useEffect(() => {
     async function getData() {
       try {
@@ -37,3 +35,5 @@ export const Questions: FC<QuestionProps> = ({
     </div>
   );
 };
+
+export default memo(Questions);
