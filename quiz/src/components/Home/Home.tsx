@@ -1,12 +1,11 @@
-import { FC, ReactElement } from "react";
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
+import { FC, memo, ReactElement } from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import { Start } from "../Question/Start";
 import { Finished } from "../Finished/Finished";
 import useQuestion from "../../hooks/useQuestion";
 import Questions from "../Question/Questions";
-
-export const Home: FC = (): ReactElement => {
+const Home: FC = (): ReactElement => {
   const {
     state: { status },
   } = useQuestion();
@@ -29,3 +28,5 @@ export const Home: FC = (): ReactElement => {
     </div>
   );
 };
+
+export default memo(Home);

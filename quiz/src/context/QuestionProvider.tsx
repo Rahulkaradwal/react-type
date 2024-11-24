@@ -1,4 +1,4 @@
-import { FC, ReactNode, useReducer } from "react";
+import { FC, memo, ReactNode, useMemo, useReducer } from "react";
 import QuestionContext from "./QuestionContext";
 import { Action, IState } from "../TypeDefinations";
 
@@ -68,13 +68,21 @@ const QuestionProvider: FC<QuestionProviderProps> = ({ children }) => {
     (prev, curr) => prev + curr.points,
     0
   );
+
+  const value = useMemo(
+    () => ({
+      state,
+      totalPoints,
+      totalQuestions,
+      dispatch,
+    }),
+    [state, totalPoints, totalQuestions]
+  );
+
   return (
-    <QuestionContext.Provider
-      value={{ state, totalPoints, totalQuestions, dispatch }}
-    >
+    <QuestionContext.Provider value={value}>
       {children}
     </QuestionContext.Provider>
   );
 };
-
-export default QuestionProvider;
+export default memo(QuestionProvider);

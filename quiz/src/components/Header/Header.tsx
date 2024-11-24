@@ -1,8 +1,8 @@
-import { FC, ReactElement } from "react";
+import { FC, memo, ReactElement } from "react";
 import { ProgressBar } from "./ProgressBar";
 import useQuestion from "../../hooks/useQuestion";
 
-export const Header: FC = (): ReactElement => {
+const Header: FC = (): ReactElement => {
   const {
     totalQuestions,
     totalPoints,
@@ -23,3 +23,5 @@ export const Header: FC = (): ReactElement => {
     </header>
   );
 };
+
+export default memo(Header);

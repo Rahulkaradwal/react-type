@@ -1,8 +1,8 @@
-import { FC, ReactElement } from "react";
+import { FC, memo, ReactElement } from "react";
 import useQuestion from "../../hooks/useQuestion";
 const footerClasses = "border-2 rounded-full px-6 py-2";
 
-export const NextButton: FC = (): ReactElement => {
+const NextButton: FC = (): ReactElement => {
   const {
     state: { index },
     totalQuestions,
@@ -28,3 +28,5 @@ export const NextButton: FC = (): ReactElement => {
     </>
   );
 };
+
+export default memo(NextButton);
