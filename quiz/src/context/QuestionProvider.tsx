@@ -7,7 +7,7 @@ interface QuestionProviderProps {
 }
 
 const initialState: IState = {
-  status: "start",
+  status: "",
   questions: [],
   answer: null,
   points: 0,
@@ -17,14 +17,13 @@ const initialState: IState = {
 
 function counterReducer(state: IState, action: Action): IState {
   switch (action.type) {
-    case "start":
-      return { ...state, status: "ready" };
+    // case "start":
+    //   return { ...state, status: "ready" };
     case "dataReceived":
       return {
         ...state,
         status: "ready",
         questions: action.payload,
-        secondsRemaining: state.questions.length * 30,
       };
     case "dataFailed":
       return { ...state, status: "error" };
@@ -42,18 +41,18 @@ function counterReducer(state: IState, action: Action): IState {
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
 
-    case "finished":
-      return { ...state, status: "finished" };
+    // case "finished":
+    //   return { ...state, status: "finished" };
     case "restart":
-      return { ...state, status: "ready", points: 0, index: 0, answer: null };
-    case "tick":
-      return {
-        ...state,
-        secondsRemaining: !state.secondsRemaining
-          ? 0
-          : state.secondsRemaining - 1,
-        status: state.secondsRemaining === 0 ? "finished" : state.status,
-      };
+      return { ...state, status: "", points: 0, index: 0, answer: null };
+    // case "tick":
+    //   return {
+    //     ...state,
+    //     secondsRemaining: !state.secondsRemaining
+    //       ? 0
+    //       : state.secondsRemaining - 1,
+    //     status: state.secondsRemaining === 0 ? "finished" : state.status,
+    //   };
 
     default:
       throw new Error("Unknown action");

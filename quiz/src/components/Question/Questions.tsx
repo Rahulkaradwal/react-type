@@ -13,6 +13,7 @@ const Questions: FC = (): ReactElement => {
       try {
         const response = await fetch("http://localhost:3001/questions");
         const questions = await response.json();
+
         dispatch({ type: "dataReceived", payload: questions });
       } catch (error) {
         dispatch({ type: "dataFailed" });

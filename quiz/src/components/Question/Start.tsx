@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
-import useQuestion from "../../hooks/useQuestion";
+import useTimer from "../../hooks/useTimer";
 
 export const Start: FC = (): ReactElement => {
-  const { dispatch } = useQuestion();
+  const { dispatch } = useTimer();
 
   const handleClick = (): void => {
     dispatch({ type: "start" });

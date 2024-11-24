@@ -1,11 +1,12 @@
 import { FC, ReactElement, useEffect } from "react";
-import useQuestion from "../../hooks/useQuestion";
+// import useQuestion from "../../hooks/useQuestion";
+import useTimer from "../../hooks/useTimer";
 
 export const Timer: FC = (): ReactElement => {
   const {
     state: { secondsRemaining },
     dispatch,
-  } = useQuestion();
+  } = useTimer();
 
   useEffect(() => {
     const timer = setInterval(() => {

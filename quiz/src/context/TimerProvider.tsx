@@ -1,32 +1,39 @@
 import { FC, ReactNode, useReducer } from "react";
-import TimerContext, { TimerAction, TimerState } from "./TimerContext";
+import { ITimerState, TimerAction } from "../TimerTypes";
+import TimerContext from "./TimerContext";
 
 interface TimerProviderProps {
   children: ReactNode;
 }
-
-const initialState: TimerState = {
+const initialState: ITimerState = {
   secondsRemaining: 0,
+  timerStatus: "",
 };
 
-function timerReducer(state: TimerState, action: TimerAction): TimerState {
+function timerReducer(state: ITimerState, action: TimerAction): ITimerState {
   switch (action.type) {
+    case "start":
+      return { ...state, timerStatus: "active", secondsRemaining: 30 * 15 };
+    case "finished": {
+      return { ...state, timerStatus: "finished" };
+    }
     case "tick":
       return {
-        secondsRemaining: Math.max(state.secondsRemaining - 1, 0),
+        ...state,
+        secondsRemaining: !state.secondsRemaining
+          ? 0
+          : state.secondsRemaining - 1,
+        timerStatus:
+          state.secondsRemaining === 0 ? "finished" : state.timerStatus,
       };
-    case "restart":
-      return {
-        secondsRemaining: 0,
-      };
+
     default:
-      throw new Error("Unknown action type");
+      throw new Error("Unknown Action");
   }
 }
 
 const TimerProvider: FC<TimerProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(timerReducer, initialState);
-
   return (
     <TimerContext.Provider value={{ state, dispatch }}>
       {children}

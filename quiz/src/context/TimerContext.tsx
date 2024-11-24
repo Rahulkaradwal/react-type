@@ -1,13 +1,8 @@
 import { createContext } from "react";
+import { ITimerState, TimerAction } from "../TimerTypes";
 
-export interface TimerAction {
-  type: "tick" | "restart";
-}
-export interface TimerState {
-  secondsRemaining: number;
-}
 export interface ITimerContext {
-  state: TimerState;
+  state: ITimerState;
   dispatch: React.Dispatch<TimerAction>;
 }
 

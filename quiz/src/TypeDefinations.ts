@@ -10,7 +10,7 @@ export interface IQuestion {
   id: string;
 }
 
-type Status = "start" | "loading" | "error" | "ready" | "active" | "finished";
+type Status = "" | "loading" | "error" | "ready" | "active";
 
 export interface IState {
   status: Status;
@@ -22,11 +22,11 @@ export interface IState {
 }
 
 export type Action =
-  | { type: "start" }
+  // | { type: "start" }
   | { type: "dataReceived"; payload: IQuestion[] }
   | { type: "dataFailed" }
   | { type: "newAnswer"; payload: number }
   | { type: "nextQuestion" }
-  | { type: "finished" }
-  | { type: "restart" }
-  | { type: "tick" };
+  // | { type: "finished" }
+  | { type: "restart" };
+// | { type: "tick" };
