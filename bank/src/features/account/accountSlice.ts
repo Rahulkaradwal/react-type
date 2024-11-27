@@ -60,20 +60,35 @@ export default accountSlice.reducer;
 
 // thunk
 
-export function deposit(amount: number, currency: string) {
-  if (currency === "USD")
-    return {
-      type: "account/deposit",
-      payload: amount,
-    };
+// export function deposit(amount: number, currency: string) {
+//   if (currency === "USD")
+//     return {
+//       type: "account/deposit",
+//       payload: amount,
+//     };
 
+//   return async function (dispatch: AppDispatch) {
+//     const res = await fetch(
+//       `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
+//     );
+//     const data = await res.json();
+//     const converted = data.rates.USD;
+//     dispatch({ type: "account/deposit", payload: converted });
+//   };
+// }
+
+export function deposit(amount: number, currency: string) {
   return async function (dispatch: AppDispatch) {
-    const res = await fetch(
-      `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
-    );
-    const data = await res.json();
-    const converted = data.rates.USD;
-    dispatch({ type: "account/deposit", payload: converted });
+    if (currency === "USD") {
+      dispatch(accountSlice.actions.deposit(amount));
+    } else {
+      const res = await fetch(
+        `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
+      );
+      const data = await res.json();
+      const converted = data.rates.USD;
+      dispatch(accountSlice.actions.deposit(converted));
+    }
   };
 }
 
