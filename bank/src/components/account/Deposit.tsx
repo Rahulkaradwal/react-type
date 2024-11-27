@@ -1,17 +1,18 @@
 import { FC, ReactElement, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deposit } from "../../features/account/accountSlice";
+import { AppDispatch } from "../../store";
 
 const Deposit: FC = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [depositAmount, setDepositAmount] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>("USD");
   function handleDeposit() {
     if (!depositAmount || !currency) return;
-    dispatch(deposit(depositAmount));
+    dispatch(deposit(depositAmount, currency));
     setDepositAmount(null);
+    setCurrency("USD");
   }
-
   return (
     <div className="mt-5">
       <label className="block mb-2">Deposit</label>

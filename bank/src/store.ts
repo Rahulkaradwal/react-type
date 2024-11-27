@@ -1,12 +1,6 @@
-import { combineReducers, createStore } from "redux";
-import reducerCustomer, { ICustomer } from "./features/customer/customerSlice";
-import reducerAccount, { ILoan } from "./features/account/accountSlice";
-
-// Combine reducers
-const rootReducer = combineReducers({
-  customer: reducerCustomer,
-  account: reducerAccount,
-});
+import customerSlice, { ICustomer } from "./features/customer/customerSlice";
+import accountSlice, { ILoan } from "./features/account/accountSlice";
+import { configureStore } from "@reduxjs/toolkit";
 
 // Type for the store
 export interface IStore {
@@ -14,7 +8,13 @@ export interface IStore {
   account: ILoan;
 }
 
-// Create the Redux store
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    customer: customerSlice,
+    account: accountSlice,
+  },
+});
 
 export default store;
+
+export type AppDispatch = typeof store.dispatch;
